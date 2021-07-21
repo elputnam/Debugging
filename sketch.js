@@ -8,13 +8,13 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   colorMode(HSB, 360, 100, 100, 100);
   rad = height*.3;
-  v = height *.1;
+  v = height *.09;
   num = height*.5;
   frameRate(20);
   background(200, 30, 100)
   for (let i = 0; i < num; i++) {
     swarm.push(new Bug());
-  }
+   }
 }
 
 function draw() {
@@ -25,12 +25,14 @@ function draw() {
   }
   push();
   //rotateY(turn);
-  rotateY(map(mouseX, 0, width, -1, 1));
-  rotateX(map(mouseY, 0, width, -1, 1));
+  //rotateY(map(mouseX, 0, width, -1, 1));
+  //rotateX(map(mouseY, 0, width, -1, 1));
+  rotateY(-1);
+  rotateX(-1);
   rotateZ(turn);
   //noStroke();
   drawTrack(height*0.15, rad, v);
-  drawEdges(height*0.15, rad, v);
+  // drawEdges(height*0.15, rad, v);
   turn += 0.005;
   pop();
 }
@@ -55,6 +57,7 @@ function drawTrack(steps, rad, v) {
     y = (rad + v * cos(0.5 * u)) * sin(u);
     z = v * sin(0.5 * u);
     vertex(x, y, z);
+
   }
   endShape(CLOSE);
 }
