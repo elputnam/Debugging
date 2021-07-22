@@ -18,18 +18,18 @@ function setup() {
 
 	colorMode(HSB, 360, 100, 100, 100);
 	rad = height * 0.3;
-	// v = height * 0.1;
+	v = height * 0.1;
 	num = height * 0.5;
 	textFont(myFont);
 	frameRate(30)
 }
 
 function draw() {
-	background(200);
+	background(5);
 	push();
 	translate(-width*.5, -height*.45)
 	textSize(32);
-	fill(0);
+	fill(200);
 	text(twists, 10, 30, 50, 50);
 	pop();
 
@@ -40,24 +40,24 @@ function draw() {
 	push();
 	//noStroke();
 	rotateX(turn);
-    rotateY(turn);
+    rotateY(0.5);
     rotateZ(turn);
-  drawTrack(100, rad, v);
-	//drawEdges(100, rad, v);
+  drawTrack(200, rad, v);
+	// drawEdges(200, rad, v);
 	turn += 0.003
 	pop();
 }
 
 function drawTrack(steps, rad, v) {
-	beginShape(LINE_STRIP);
+	beginShape(TRIANGLE_STRIP);
 	noFill();
-	//fill(200, 100, 100);
-  // noStroke();
- twists = twistSlider.value();
-  print(twists);
-  stroke(0);
-  //fill(255, 50);
-	strokeWeight(5);
+	// fill(200, 50);
+  	// noStroke();
+  	twists = twistSlider.value();
+  	print(twists);
+	stroke(255);
+  	//fill(255, 50);
+	strokeWeight(0.5);
 	for (let step = 0; step < (steps + 1); step += 1) {
 		let u = step * TAU / steps;
 		let x = (rad - v * cos(twists * u)) * cos(u);
